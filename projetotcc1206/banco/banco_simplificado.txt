@@ -1,0 +1,60 @@
+-- Criação do banco de dados
+CREATE DATABASE dbteste;
+
+-- Utilização do banco de dados
+USE dbteste;
+
+-- Criação da tabela "tfuncoes"
+CREATE TABLE tfuncoes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  cargo VARCHAR(50) NOT NULL,
+  salario DECIMAL(10, 2) NOT NULL
+);
+
+-- Criação da tabela "tfuncionarios"
+CREATE TABLE tfuncionarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL,
+  data_nascimento DATE NOT NULL,
+  telefone VARCHAR(20) NOT NULL,
+  funcao_id INT NOT NULL,
+  FOREIGN KEY (funcao_id) REFERENCES tfuncoes(id)
+);
+
+-- Criação da tabela "tusuarios"
+CREATE TABLE tusuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL,
+  login VARCHAR(50) NOT NULL,
+  senha VARCHAR(50) NOT NULL,
+  id_funcionario INT,
+  foto_caminho VARCHAR(255),
+  FOREIGN KEY (id_funcionario) REFERENCES tfuncionarios(id)
+);
+
+-- Criação da tabela "tferias"
+CREATE TABLE tferias (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  data_inicio DATE NOT NULL,
+  data_fim DATE NOT NULL,
+  funcionario_id INT NOT NULL,
+  FOREIGN KEY (funcionario_id) REFERENCES tfuncionarios(id)
+);
+
+-- Inserção de exemplos na tabela "tfuncoes"
+INSERT INTO tfuncoes (cargo, salario) VALUES
+('Programador', 5000.00),
+('Analista de Dados', 6000.00),
+('Gerente de Projetos', 8000.00);
+
+-- Inserção de exemplos na tabela "tfuncionarios"
+INSERT INTO tfuncionarios (nome, data_nascimento, telefone, funcao_id) VALUES
+('João Silva', '1990-05-15', '9999-9999', 1),
+('Maria Santos', '1985-10-20', '8888-8888', 2),
+('Pedro Oliveira', '1995-02-28', '7777-7777', 3);
+
+-- Inserção de exemplos na tabela "tusuarios"
+INSERT INTO tusuarios (nome, login, senha, id_funcionario) VALUES
+('João Silva', 'joao123', 'senha123', 1),
+('Maria Santos', 'maria456', 'senha456', 2),
+('Pedro Oliveira', 'pedro789', 'senha789', 3);

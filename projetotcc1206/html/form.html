@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Meu Site - Formulário</title>
+    <link rel="stylesheet" href="../css/form.css">
+</head>
+<body>
+    
+    <form action="../php/processar_form.php" method="post" class="form0">
+        <h1>Cadastro de Funcionários</h1>
+        <h2>Usuário do Sistema</h2>
+        <label for="login">Login:</label>
+        <input type="text" name="login" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" required>
+
+        <h2>Funcionário</h2>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label for="data_nascimento">Data de Nascimento:</label>
+        <input type="date" name="data_nascimento" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" name="telefone" required>
+
+        <h2>Função</h2>
+        <label for="cargo">Cargo:</label>
+        <input type="text" name="cargo" required>
+
+        <label for="salario">Salário:</label>
+        <input type="number" name="salario" required>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>
