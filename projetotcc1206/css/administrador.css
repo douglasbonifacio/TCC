@@ -1,0 +1,12 @@
+body{
+    background-image: url("../uploads/background.jpg");
+    font-family: sans-serif;
+}
+.box {
+    padding: 30px;
+    border: solid black 1px;
+    height: 600px;
+    width: 1000px;
+    background-color: rgb(238, 233, 227);
+    margin: 30px auto;
+}

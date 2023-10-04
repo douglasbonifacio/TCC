@@ -1,0 +1,110 @@
+-- Parte 1: Criação do banco de dados
+CREATE DATABASE dbteste;
+
+-- Parte 2: Utilização do banco de dados
+USE dbteste;
+
+-- Parte 3: Criação das tabelas tfuncoes, tadministrador, tfuncionarios, tusuarios, tferias
+CREATE TABLE tfuncoes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  cargo VARCHAR(50) NOT NULL,
+  salario DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE tadministrador (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL,
+  login VARCHAR(50) NOT NULL,
+  senha VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE tfuncionarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL,
+  data_nascimento DATE NOT NULL,
+  telefone VARCHAR(20) NOT NULL,
+  funcao_id INT NOT NULL,
+  FOREIGN KEY (funcao_id) REFERENCES tfuncoes(id)
+);
+
+CREATE TABLE tusuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL,
+  login VARCHAR(50) NOT NULL,
+  senha VARCHAR(50) NOT NULL,
+  id_funcionario INT,
+  foto_caminho VARCHAR(255),
+  FOREIGN KEY (id_funcionario) REFERENCES tfuncionarios(id)
+);
+
+CREATE TABLE tferias (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  data_inicio DATE NOT NULL,
+  data_fim DATE NOT NULL,
+  funcionario_id INT NOT NULL,
+  FOREIGN KEY (funcionario_id) REFERENCES tfuncionarios(id)
+);
+
+-- Parte 4: Inserção de dados nas tabelas tfuncoes, tfuncionarios, tusuarios, tferias
+INSERT INTO tfuncoes (cargo, salario) VALUES
+('Programador', 5000.00),
+('Analista de Dados', 6000.00),
+('Gerente de Projetos', 8000.00);
+
+INSERT INTO tfuncionarios (nome, data_nascimento, telefone, funcao_id) VALUES
+('João Silva', '1990-05-15', '9999-9999', 1),
+('Maria Santos', '1985-10-20', '8888-8888', 2),
+('Pedro Oliveira', '1995-02-28', '7777-7777', 3);
+
+INSERT INTO tusuarios (nome, login, senha, id_funcionario) VALUES
+('João Silva', 'joao123', 'senha123', 1),
+('Maria Santos', 'maria456', 'senha456', 2),
+('Pedro Oliveira', 'pedro789', 'senha789', 3);
+
+-- Parte 5: Criação da tabela tregistro_horas e inserção de dados nela
+CREATE TABLE tregistro_horas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  funcionario_id INT NOT NULL,
+  data DATE NOT NULL,
+  entrada TIME NOT NULL,
+  saida_almoco TIME NOT NULL,
+  volta_almoco TIME NOT NULL,
+  saida TIME NOT NULL,
+  total_horas DECIMAL(5, 2) NOT NULL,
+  FOREIGN KEY (funcionario_id) REFERENCES tfuncionarios(id)
+);
+
+INSERT INTO tregistro_horas (funcionario_id, data, entrada, saida_almoco, volta_almoco, saida, total_horas) VALUES
+(1, '2023-09-20', '08:00:00', '12:00:00', '13:00:00', '17:00:00', 8.00),
+(1, '2023-09-21', '08:15:00', '12:15:00', '13:15:00', '17:15:00', 8.00),
+(1, '2023-09-22', '08:30:00', '12:30:00', '13:30:00', '17:30:00', 8.00),
+(2, '2023-09-20', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
+(2, '2023-09-21', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50),
+(2, '2023-09-22', '09:30:00', '13:00:00', '14:00:00', '18:30:00', 8.50),
+(3, '2023-09-20', '08:45:00', '12:15:00', '13:15:00', '17:45:00', 8.00),
+(3, '2023-09-21', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
+(3, '2023-09-22', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50);
+
+-- Parte 6: Adição da coluna "tipo" à tabela "tusuarios"
+ALTER TABLE tusuarios
+ADD COLUMN tipo ENUM('funcionario', 'administrador') NOT NULL DEFAULT 'funcionario';
+
+-- Parte 7: Atualização do tipo de usuário para o administrador
+UPDATE tusuarios SET tipo = 'administrador' WHERE login = 'admin';
+
+CREATE TABLE teducacao (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  funcionario_id INT NOT NULL,
+  escolaridade VARCHAR(50) NOT NULL,
+  nivel_formacao VARCHAR(50) NOT NULL,
+  especializacao VARCHAR(255),
+  FOREIGN KEY (funcionario_id) REFERENCES tfuncionarios(id)
+);
+INSERT INTO teducacao (funcionario_id, escolaridade, nivel_formacao, especializacao)
+VALUES
+(1, 'Ensino Médio', 'Completo', NULL),
+(2, 'Bacharelado', 'Completo', 'Ciência da Computação'),
+(3, 'Mestrado', 'Completo', 'Engenharia de Software');
+
+INSERT INTO tusuarios (nome, login, senha, tipo) VALUES
+('Administrador', 'admin', 'admin', 'administrador');

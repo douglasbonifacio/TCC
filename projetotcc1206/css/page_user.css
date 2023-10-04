@@ -10,7 +10,7 @@ html, body {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-image: url("../img/bg.jpg");
+  background-image: url("../uploads/bg.jpg");
   background-attachment: fixed;
   background-size: cover;
 }
@@ -139,3 +139,4 @@ body {
 .sidebar-small .sidebar-menu a span {
   scale: 0;
 }
+

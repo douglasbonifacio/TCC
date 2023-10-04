@@ -1,3 +1,13 @@
 body {
-    background-image: url("../img/background.jpg");
+    background: url('../uploads/background.jpg');
+}
+/* Estilo para a classe 'month-box' */
+.month-box {
+    width: 75px;
+    border: 2px solid #333; /* Borda sólida de 2px com cor #333 */
+    padding: 10px; /* Espaçamento interno de 10px */
+    margin: 5px 0; /* Margem externa de 5px na parte superior e inferior */
+    display: block; /* Torna as caixas blocos para que ocupem a largura total */
+    border-radius: 10px; /* Bordas arredondadas de 10px */
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
 }

@@ -1,0 +1,15 @@
+body{
+    background-image: url("../uploads/background.jpg");
+    font-family: sans-serif;
+}
+h3 {
+    text-align: center;
+}
+.box {
+    padding: 30px;
+    border: solid black 1px;
+    height: 500px;
+    width: 800px;
+    background-color: rgb(238, 233, 227);
+    margin: 30px auto;
+}
