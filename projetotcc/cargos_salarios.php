@@ -56,20 +56,19 @@ if ($result->num_rows > 0) {
 // Fecha a conexão com o banco de dados
 $conn->close();
 ?>
+<button id="btn-voltar" class= "btn" onclick="voltarParaPaginaUser()">Voltar</button>
+<script>
+    // Função para voltar para a página do usuário
+    function voltarParaPaginaUser() {
+        window.location.href = 'page_user.php';
+    }
+</script>
 </body>
 </html>
-Certifique-se de ajustar as configurações do servidor (como nome de usuário, senha e nome do banco de dados) de acordo com a sua instalação do MySQL. Este código vai mostrar as informações do funcionário, função e educação na página HTML.
-
-
-
-
-
-
-
-// Fecha a conexão com o banco de dados
-$conn->close();
-?>
     <head>
         <link rel="stylesheet" href="css/cargos_salarios.css">
     </head>
+    <body>
+    <button id="btn-voltar" class= "btn" onclick="voltarParaPaginaUser()">Voltar</button>
+    </body>
 </html>

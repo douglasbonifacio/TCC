@@ -106,8 +106,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="column">
         <h2>Bem-Vindo ao Portal<br>RH Vision</h2>
-        <p>Se voce não tem uma conta, gostria de cadastrar agora?</p>
-        <a href="#">Sign Up</a>
+        <p>Se você tem dúvidas, sugestôes ou críticas, mande-nos um e-mail.</p>
+        <a href="#">E-mail</a>
         </div>
         </div>
             

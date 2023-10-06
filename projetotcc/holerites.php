@@ -9,11 +9,11 @@
         #pdf-viewer {
             display: none;
             position: fixed;
-            top: 50%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 65%; /* Defina a largura desejada */
-            height: 80vh; /* Defina a altura desejada */
+            width: 60%; /* Defina a largura desejada */
+            height: 70vh; /* Defina a altura desejada */
             border: none;
             z-index: 9999;
         }
@@ -35,7 +35,7 @@
         <li class="month-box"><a href="uploads/Modelo_Holerite_Novembro.pdf">Novembro</a></li>
         <li class="month-box"><a href="uploads/Modelo_Holerite_Dezembro.pdf">Dezembro</a></li>
     </ul>
-
+    <button id="btn-voltar" class= "btn" onclick="voltarParaPaginaUser()">Voltar</button>
     <iframe id="pdf-viewer"></iframe>
 
     <script>
@@ -52,6 +52,10 @@
                 pdfViewer.style.display = 'block';
             }
         });
+        // Função para voltar para a página do usuário
+    function voltarParaPaginaUser() {
+        window.location.href = 'page_user.php';
+    }
     </script>
 </body>
 </html>

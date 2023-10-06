@@ -1,0 +1,31 @@
+body {
+    background-image: url("../uploads/background.jpg");
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+/* Estilos para a classe "btn" */
+.botao {
+    /* Estilos da classe "btn" aqui */
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 60px;
+    right: 660px;
+}

@@ -10,4 +10,26 @@ body {
     display: block; /* Torna as caixas blocos para que ocupem a largura total */
     border-radius: 10px; /* Bordas arredondadas de 10px */
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+    
 }
+/* Estilos para a classe "btn" */
+.btn {
+    /* Estilos da classe "btn" aqui */
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para posicionar o botão no canto inferior direito */
+#btn-voltar {
+    position: fixed;
+    bottom: 60px;
+    right: 660px;
+}
+.btn-voltar:hover {
+    background-color: #0056b3; /* Altera a cor de fundo ao passar o mouse */
+}
+

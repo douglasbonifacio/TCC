@@ -1,0 +1,31 @@
+body{
+    background-image: url("../uploads/background.jpg");
+    font-family: sans-serif;
+}
+h3 {
+    text-align: center;
+}
+.box {
+    padding: 30px;
+    border: solid black 1px;
+    height: 500px;
+    width: 800px;
+    background-color: rgb(238, 233, 227);
+    margin: 30px auto;
+}
+.btn-voltar {
+    position: absolute; /* Define a posição absoluta */
+    bottom: 60px; /* Define a distância do fundo (bottom) */
+    right: 660px; /* Define a distância da direita (right) */
+    padding: 10px 20px; /* Define preenchimento para o botão */
+    background-color: #007BFF; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none; /* Remove a borda do botão */
+    border-radius: 5px; /* Adiciona cantos arredondados ao botão */
+    cursor: pointer; /* Mostra um cursor de mão ao passar o mouse */
+}
+
+/* Estilize o botão quando o mouse passar por cima */
+.btn-voltar:hover {
+    background-color: #0056b3; /* Altera a cor de fundo ao passar o mouse */
+}

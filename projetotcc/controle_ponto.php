@@ -94,5 +94,12 @@ if ($resultFuncionarioId->num_rows > 0) {
         }
         ?>
     </table>
+    <button class= "botao" onclick="voltarParaPaginaUser()">Voltar</button>
+    <script>
+        // Função para voltar para a página do usuário
+    function voltarParaPaginaUser() {
+        window.location.href = 'page_user.php';
+    }
+    </script>
 </body>
 </html>
