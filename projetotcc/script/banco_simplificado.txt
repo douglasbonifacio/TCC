@@ -52,14 +52,14 @@ INSERT INTO tfuncoes (cargo, salario) VALUES
 ('Gerente de Projetos', 8000.00);
 
 INSERT INTO tfuncionarios (nome, data_nascimento, telefone, funcao_id) VALUES
-('João Silva', '1990-05-15', '9999-9999', 1),
-('Maria Santos', '1985-10-20', '8888-8888', 2),
-('Pedro Oliveira', '1995-02-28', '7777-7777', 3);
+('Matheus Ribeiro', '1998-02-28', '14996911488', 1),
+('Marcia Oliveira', '1985-10-20', '14998721664', 2),
+('Douglas Bonifácio', '1984-02-21', '14997672164', 3);
 
 INSERT INTO tusuarios (nome, login, senha, id_funcionario) VALUES
-('João Silva', 'joao123', 'senha123', 1),
-('Maria Santos', 'maria456', 'senha456', 2),
-('Pedro Oliveira', 'pedro789', 'senha789', 3);
+('Matheus Ribeiro', 'matheus123', 'senha123', 1),
+('Marcia Oliveira', 'marcia456', 'senha456', 2),
+('Douglas Bonifácio', 'douglas789', 'senha789', 3);
 
 -- Parte 5: Criação da tabela tregistro_horas e inserção de dados nela
 CREATE TABLE tregistro_horas (
@@ -78,9 +78,15 @@ INSERT INTO tregistro_horas (funcionario_id, data, entrada, saida_almoco, volta_
 (1, '2023-09-20', '08:00:00', '12:00:00', '13:00:00', '17:00:00', 8.00),
 (1, '2023-09-21', '08:15:00', '12:15:00', '13:15:00', '17:15:00', 8.00),
 (1, '2023-09-22', '08:30:00', '12:30:00', '13:30:00', '17:30:00', 8.00),
+(1, '2023-09-23', '08:00:00', '12:00:00', '13:00:00', '17:00:00', 8.00),
+(1, '2023-09-24', '08:15:00', '12:15:00', '13:15:00', '17:15:00', 8.00),
+(1, '2023-09-25', '08:30:00', '12:30:00', '13:30:00', '17:30:00', 8.00),
 (2, '2023-09-20', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
 (2, '2023-09-21', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50),
 (2, '2023-09-22', '09:30:00', '13:00:00', '14:00:00', '18:30:00', 8.50),
+(2, '2023-09-23', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
+(2, '2023-09-24', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50),
+(2, '2023-09-25', '09:30:00', '13:00:00', '14:00:00', '18:30:00', 8.50),
 (3, '2023-09-20', '08:45:00', '12:15:00', '13:15:00', '17:45:00', 8.00),
 (3, '2023-09-21', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
 (3, '2023-09-22', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50);
@@ -102,7 +108,7 @@ CREATE TABLE teducacao (
 );
 INSERT INTO teducacao (funcionario_id, escolaridade, nivel_formacao, especializacao)
 VALUES
-(1, 'Ensino Médio', 'Completo', NULL),
+(1, 'Bacharelado', 'Completo', 'Ciências de Dados'),
 (2, 'Bacharelado', 'Completo', 'Ciência da Computação'),
 (3, 'Mestrado', 'Completo', 'Engenharia de Software');
 

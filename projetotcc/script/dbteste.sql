@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06/10/2023 às 02:06
+-- Tempo de geração: 18/10/2023 às 01:31
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -53,7 +53,7 @@ CREATE TABLE `teducacao` (
 --
 
 INSERT INTO `teducacao` (`id`, `funcionario_id`, `escolaridade`, `nivel_formacao`, `especializacao`) VALUES
-(1, 1, 'Ensino Médio', 'Completo', NULL),
+(1, 1, 'Bacharelado', 'Completo', 'Ciências de Dados'),
 (2, 2, 'Bacharelado', 'Completo', 'Ciência da Computação'),
 (3, 3, 'Mestrado', 'Completo', 'Engenharia de Software');
 
@@ -89,10 +89,9 @@ CREATE TABLE `tfuncionarios` (
 --
 
 INSERT INTO `tfuncionarios` (`id`, `nome`, `data_nascimento`, `telefone`, `funcao_id`) VALUES
-(1, 'João Silva', '1990-05-15', '9999-9999', 1),
-(2, 'Maria Santos', '1985-10-20', '8888-8888', 2),
-(3, 'Pedro Oliveira', '1995-02-28', '7777-7777', 3),
-(4, 'Douglas', '2010-10-10', '14996778899', 4);
+(1, 'Matheus Ribeiro', '1998-02-28', '14996911488', 1),
+(2, 'Marcia Oliveira', '1985-10-20', '14998721664', 2),
+(3, 'Douglas Bonifácio', '1984-02-21', '14997672164', 3);
 
 -- --------------------------------------------------------
 
@@ -113,8 +112,7 @@ CREATE TABLE `tfuncoes` (
 INSERT INTO `tfuncoes` (`id`, `cargo`, `salario`) VALUES
 (1, 'Programador', 5000.00),
 (2, 'Analista de Dados', 6000.00),
-(3, 'Gerente de Projetos', 8000.00),
-(4, 'dev', 100000.00);
+(3, 'Gerente de Projetos', 8000.00);
 
 -- --------------------------------------------------------
 
@@ -141,12 +139,18 @@ INSERT INTO `tregistro_horas` (`id`, `funcionario_id`, `data`, `entrada`, `saida
 (1, 1, '2023-09-20', '08:00:00', '12:00:00', '13:00:00', '17:00:00', 8.00),
 (2, 1, '2023-09-21', '08:15:00', '12:15:00', '13:15:00', '17:15:00', 8.00),
 (3, 1, '2023-09-22', '08:30:00', '12:30:00', '13:30:00', '17:30:00', 8.00),
-(4, 2, '2023-09-20', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
-(5, 2, '2023-09-21', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50),
-(6, 2, '2023-09-22', '09:30:00', '13:00:00', '14:00:00', '18:30:00', 8.50),
-(7, 3, '2023-09-20', '08:45:00', '12:15:00', '13:15:00', '17:45:00', 8.00),
-(8, 3, '2023-09-21', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
-(9, 3, '2023-09-22', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50);
+(4, 1, '2023-09-23', '08:00:00', '12:00:00', '13:00:00', '17:00:00', 8.00),
+(5, 1, '2023-09-24', '08:15:00', '12:15:00', '13:15:00', '17:15:00', 8.00),
+(6, 1, '2023-09-25', '08:30:00', '12:30:00', '13:30:00', '17:30:00', 8.00),
+(7, 2, '2023-09-20', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
+(8, 2, '2023-09-21', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50),
+(9, 2, '2023-09-22', '09:30:00', '13:00:00', '14:00:00', '18:30:00', 8.50),
+(10, 2, '2023-09-23', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
+(11, 2, '2023-09-24', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50),
+(12, 2, '2023-09-25', '09:30:00', '13:00:00', '14:00:00', '18:30:00', 8.50),
+(13, 3, '2023-09-20', '08:45:00', '12:15:00', '13:15:00', '17:45:00', 8.00),
+(14, 3, '2023-09-21', '09:00:00', '12:30:00', '13:30:00', '18:00:00', 8.50),
+(15, 3, '2023-09-22', '09:15:00', '12:45:00', '13:45:00', '18:15:00', 8.50);
 
 -- --------------------------------------------------------
 
@@ -169,11 +173,10 @@ CREATE TABLE `tusuarios` (
 --
 
 INSERT INTO `tusuarios` (`id`, `nome`, `login`, `senha`, `id_funcionario`, `foto_caminho`, `tipo`) VALUES
-(1, 'João Silva', 'joao123', 'senha123', 1, NULL, 'funcionario'),
-(2, 'Maria Santos', 'maria456', 'senha456', 2, NULL, 'funcionario'),
-(3, 'Pedro Oliveira', 'pedro789', 'senha789', 3, NULL, 'funcionario'),
-(4, 'Administrador', 'admin', 'admin', NULL, NULL, 'administrador'),
-(5, 'Douglas', 'douglas', '123', 4, 'fotos/4_1696544216.jpg', 'funcionario');
+(1, 'Matheus Ribeiro', 'matheus123', 'senha123', 1, 'fotos/matheus.jpg', 'funcionario'),
+(2, 'Marcia Oliveira', 'marcia456', 'senha456', 2, 'fotos/marcia.jpg', 'funcionario'),
+(3, 'Douglas Bonifácio', 'douglas789', 'senha789', 3, 'fotos/4_1696544216.jpg', 'funcionario'),
+(4, 'Administrador', 'admin', 'admin', NULL, NULL, 'administrador');
 
 --
 -- Índices para tabelas despejadas
@@ -252,25 +255,25 @@ ALTER TABLE `tferias`
 -- AUTO_INCREMENT de tabela `tfuncionarios`
 --
 ALTER TABLE `tfuncionarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `tfuncoes`
 --
 ALTER TABLE `tfuncoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `tregistro_horas`
 --
 ALTER TABLE `tregistro_horas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `tusuarios`
 --
 ALTER TABLE `tusuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para tabelas despejadas

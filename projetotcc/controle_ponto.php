@@ -82,17 +82,21 @@ if ($resultFuncionarioId->num_rows > 0) {
             <th>Total de Horas</th>
         </tr>
         <?php
-        while ($rowRegistro = $resultRegistros->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $rowRegistro['data'] . "</td>";
-            echo "<td>" . $rowRegistro['entrada'] . "</td>";
-            echo "<td>" . $rowRegistro['saida_almoco'] . "</td>";
-            echo "<td>" . $rowRegistro['volta_almoco'] . "</td>";
-            echo "<td>" . $rowRegistro['saida'] . "</td>";
-            echo "<td>" . $rowRegistro['total_horas'] . " horas</td>";
-            echo "</tr>";
-        }
-        ?>
+while ($rowRegistro = $resultRegistros->fetch_assoc()) {
+    echo "<tr>";
+    // Formate a data no formato brasileiro
+    $dataFormatada = date('d/m/Y', strtotime($rowRegistro['data']));
+    
+    echo "<td>" . $dataFormatada . "</td>";
+    echo "<td>" . $rowRegistro['entrada'] . "</td>";
+    echo "<td>" . $rowRegistro['saida_almoco'] . "</td>";
+    echo "<td>" . $rowRegistro['volta_almoco'] . "</td>";
+    echo "<td>" . $rowRegistro['saida'] . "</td>";
+    echo "<td>" . $rowRegistro['total_horas'] . " horas</td>";
+    echo "</tr>";
+}
+?>
+
     </table>
     <button class= "botao" onclick="voltarParaPaginaUser()">Voltar</button>
     <script>

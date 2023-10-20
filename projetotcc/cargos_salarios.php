@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
     echo "<p>Telefone: " . $row['telefone'] . "</p>";
     echo "<h1>Informações da Função</h1>";
     echo "<p>Cargo: " . $row['cargo'] . "</p>";
-    echo "<p>Salário: " . $row['salario'] . "</p>";
+    echo "<p>Salário: R$ " . number_format($row['salario'], 2, ',', '.') . "</p>";
     echo "<h1>Informações de Educação</h1>";
     echo "<p>Escolaridade: " . $row['escolaridade'] . "</p>";
     echo "<p>Nível de Formação: " . $row['nivel_formacao'] . "</p>";

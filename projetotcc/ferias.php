@@ -1,101 +1,90 @@
-<!-- Identificação do Funcionário -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agendar Férias</title>
+    <link rel="stylesheet" href="css/ferias.css">
+</head>
+<body class="box">
+    <div>
+    <h3>Agendar Férias:</h3>
+   
+
+    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+        <label for="data_inicio">Data de Início:</label>
+        <input type="date" id="data_inicio" name="data_inicio" required><br><br>
+
+        <label for="data_fim">Data de Término:</label>
+        <input type="date" id="data_fim" name="data_fim" required><br><br>
+
+        <label for="funcionario_id">ID do Funcionário:</label>
+        <input type="number" id="funcionario_id" name="funcionario_id" required><br><br>
+
+        <!--<input  class="botao" type="submit" value="Agendar">-->
+        <button class="botao" type="submit" value="Agendar">Agendar</button>
+    </form>
+    </div><br>
+    <button class="btn-voltar" onclick="voltarParaPaginaUser()">Voltar</button>
+    <script>
+    function voltarParaPaginaUser() {
+        // Use o método window.location.href para redirecionar para a página "user"
+        window.location.href = 'page_user.php';
+    }
+</script>
+</body>
+</html>
+
 <?php
 session_start();
-if (isset($_SESSION["funcionario_id"])) {
-    $funcionarioId = $_SESSION["funcionario_id"];
-    
-    // Criar uma conexão com o banco de dados
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "dbteste";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Coletar e validar os dados do formulário
+    $dataInicio = $_POST["data_inicio"];
+    $dataFim = $_POST["data_fim"];
+    $funcionarioId = $_POST["funcionario_id"];
 
-    // Verificar a conexão
-    if ($conn->connect_error) {
-        die("Conexão falhou: " . $conn->connect_error);
+    // Verifique a validade dos dados do formulário antes de prosseguir
+
+    // Conectar ao banco de dados
+    $conexao = new mysqli("localhost", "root", "", "dbteste");
+
+    if ($conexao->connect_error) {
+        die("Falha na conexão: " . $conexao->connect_error);
     }
 
-    // Consulta para obter Nome do Funcionário
-    $sql = "SELECT nomeFuncionario FROM tfuncionarios WHERE id = $funcionarioId";
-    $result = $conn->query($sql);
+    // Inserir os dados na tabela "tferias" usando declaração preparada
+    $inserirFerias = $conexao->prepare("INSERT INTO tferias (data_inicio, data_fim, funcionario_id) VALUES (?, ?, ?)");
+
+    if ($inserirFerias) {
+        $inserirFerias->bind_param("ssi", $dataInicio, $dataFim, $funcionarioId);
+        if ($inserirFerias->execute()) {
+            
+        } else {
+            echo "Erro ao agendar férias: " . $conexao->error;
+        }
+        $inserirFerias->close();
+    } else {
+        echo "Erro na preparação da declaração: " . $conexao->error;
+    }
+
+    // Consultar as férias agendadas apenas para o funcionário logado
+    $sql = "SELECT data_inicio, data_fim FROM tferias WHERE funcionario_id = $funcionarioId";
+    $result = $conexao->query($sql);
 
     if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $nomeFuncionario = $row["nomeFuncionario"];
-        echo "<p>Nome do Funcionário: " . $nomeFuncionario . "</p>";
+        echo "<h3>Férias Agendadas:</h3>";
+        echo "<ul>";
+        while ($row = $result->fetch_assoc()) {
+            $dataInicio = $row['data_inicio'];
+            $dataFim = $row['data_fim'];
+            echo "<li>Data de Início: $dataInicio | Data de Término: $dataFim</li>";
+        }
+        echo "</ul>";
+        echo "Férias agendadas com sucesso!";
+    } else {
+        echo "Nenhuma férias agendada.";
     }
 
     // Fechar a conexão com o banco de dados
-    $conn->close();
-} else {
-    echo "<p>ID do Funcionário não encontrado.</p>";
+    $conexao->close();
 }
 ?>
-
-
-    <!-- Resto do seu código aqui... -->
-</body>
-</html>
-
-
-    <!-- Ano de Referência das Férias -->
-    <label for="ano_referencia">Ano de Referência:</label>
-    <input type="text" id="ano_referencia" name="ano_referencia"><br><br>
-
-    <!-- Calendário para Marcar o Início e o Fim das Férias -->
-    <label for="data_inicio">Data de Início:</label>
-    <input type="date" id="data_inicio" name="data_inicio"><br><br>
-
-    <label for="data_fim">Data de Fim:</label>
-    <input type="date" id="data_fim" name="data_fim"><br><br>
-
-    <!-- Botão Adicionar -->
-    <input type="button" value="Adicionar" onclick="adicionarFerias()"><br><br>
-
-    <!-- Tabela de Férias Programadas -->
-    <table border="1">
-        <tr>
-            <th>Ano de Referência</th>
-            <th>Data Inicial</th>
-            <th>Data Final</th>
-            <th>Quantidade de Dias</th>
-            <th>Ação</th>
-        </tr>
-        <!-- Aqui você pode preencher a tabela com dados do banco de dados usando PHP -->
-        <?php
-        // Consulta para obter as férias programadas
-        if (isset($_SESSION["funcionario_id"])) {
-            $funcionarioId = $_SESSION["funcionario_id"];
-            $sql = "SELECT * FROM tferias WHERE funcionario_id = $funcionarioId";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["ano_referencia"] . "</td>";
-                    echo "<td>" . $row["data_inicio"] . "</td>";
-                    echo "<td>" . $row["data_fim"] . "</td>";
-                    echo "<td>" . $row["quantidade_dias"] . "</td>";
-                    echo "<td><button onclick=\"finalizarFerias(" . $row["id"] . ")\">Finalizar</button></td>";
-                    echo "</tr>";
-                }
-            }
-        }
-        ?>
-        <!-- Repita esta linha para cada registro de férias -->
-    </table>
-
-    <!-- Funções JavaScript para Adicionar e Finalizar Férias -->
-    <script>
-        function adicionarFerias() {
-            // Implemente a lógica para adicionar férias aqui
-        }
-
-        function finalizarFerias(feriasId) {
-            // Implemente a lógica para finalizar férias aqui
-        }
-    </script>
-</body>
-</html>

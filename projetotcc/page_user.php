@@ -102,6 +102,7 @@ $conn->close();
             ?>
         </div>
     </div>
+    
     <div class="sidebar-footer">
         <!-- Resto do seu código aqui -->
         <div class="sidebar-menu">

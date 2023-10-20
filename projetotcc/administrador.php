@@ -72,7 +72,7 @@
         
         <input type="submit" value="Cadastrar">
     </form>
-
+    <button class= "botao" onclick="voltarParaPaginaUser()">Voltar</button>
     <script>
         function adicionarFormacao() {
             const formacoesDiv = document.getElementById("formacoes");
@@ -105,6 +105,9 @@
 
             formacoesDiv.appendChild(novaFormacaoDiv);
         }
+        function voltarParaPaginaUser() {
+        window.location.href = 'login.php';
+    }
     </script>
 </body>
 </html>

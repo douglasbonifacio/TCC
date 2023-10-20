@@ -1,10 +1,11 @@
 body {
     background-image: url("../uploads/background.jpg");
+    font-family: sans-serif;
 }
 
 table {
     border-collapse: collapse;
-    width: 100%;
+    width: 80%;
 }
 
 th, td {
@@ -26,6 +27,6 @@ th {
     border-radius: 5px;
     cursor: pointer;
     position: fixed;
-    bottom: 60px;
-    right: 660px;
+    top: 745px;
+    left: 680px;
 }

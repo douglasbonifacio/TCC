@@ -87,7 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="flex">
         <button type="submit">Entre</button id="enviar" value="Entrar">
-        <a href="#">Redefina sua Senha Agora</a>
         </div>
         <p style="margin-top:3rem;margin-bottom:1.5rem">Siga o RH Vison nas Redes Sociais</p>
         <div class="social-buttons">
@@ -105,6 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
         </div>
         <div class="column">
+        <img src="fotos/rhvision.png">
         <h2>Bem-Vindo ao Portal<br>RH Vision</h2>
         <p>Se você tem dúvidas, sugestôes ou críticas, mande-nos um e-mail.</p>
         <a href="#">E-mail</a>
