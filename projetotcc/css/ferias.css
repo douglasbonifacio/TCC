@@ -7,11 +7,12 @@ h3 {
 }
 .box {
     padding: 30px;
-    border: solid black 1px;
+    border-radius: 15px 50px;
     height: 500px;
     width: 800px;
     background-color: rgb(238, 233, 227);
     margin: 30px auto;
+
 }
 .btn-voltar {
     position: absolute; /* Define a posição absoluta */

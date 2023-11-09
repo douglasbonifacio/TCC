@@ -139,4 +139,15 @@ body {
 .sidebar-small .sidebar-menu a span {
   scale: 0;
 }
-
+.conteudo {
+  position: absolute;
+  width: 900px;
+  height: 650px;
+  background-color: rgb(11, 13, 14);
+  left: 450px;
+  border-radius: 15px 50px;
+  color: rgb(248, 243, 243);
+  font-size: 30px;
+  text-align: center;
+  opacity: 0.4;
+}

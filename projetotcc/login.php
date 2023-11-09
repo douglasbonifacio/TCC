@@ -107,11 +107,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <img src="fotos/rhvision.png">
         <h2>Bem-Vindo ao Portal<br>RH Vision</h2>
         <p>Se você tem dúvidas, sugestôes ou críticas, mande-nos um e-mail.</p>
-        <a href="#">E-mail</a>
+        <button onclick="abrirCaixaDeEmail()">Email</button>
         </div>
-        </div>
-            
+        </div>  
         <script src="valida.js"></script>
+        <script>
+            function abrirCaixaDeEmail() {
+                location.href = "mailto:destinatario@example.com?subject=Assunto&body=Corpo do Email";
+                }
+        </script>
     </form>
 </body>
 </html>
