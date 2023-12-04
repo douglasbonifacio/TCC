@@ -65,7 +65,7 @@ body:after {
   display: inline-block;
   padding: 12px 30px;
   font-size: 16px;
-  border: 2px solid #0037ff;
+  border: 2px solid #20c53b;
   color: black;
   border-radius: 50px;
   cursor: pointer;
@@ -73,7 +73,7 @@ body:after {
   font-weight: 600;
 }
 .login-card .column:last-child a:hover {
-  background-color: #0037ff;
+  background-color: #20c53b;
   color: white;
 }
 .login-card .column:last-child {

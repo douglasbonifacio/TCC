@@ -6,17 +6,6 @@
     <link rel="stylesheet" href="css/administrador.css">
 </head>
 <body>
-    <button onclick="mostrarFormulario()">Mostrar Formulário</button>
-    <button onclick="mostrarFeriasAgendadas()">Mostrar Férias Agendadas</button>
-    <button onclick="alterarCadastro()">Alterar Cadastro</button>
-
-    <div id="formulario" style="display: none;">
-        <div id="feriasAgendadas" style="display: none;">
-        <h3>Férias Agendadas:</h3>
-        <ul id="feriasList"> <!-- Use esta lista para exibir as férias agendadas -->
-        </ul>
-    </div>
-        
     <form action="processar_cadastro.php" method="post" class="box" enctype="multipart/form-data">
         <h1>Cadastro de Funcionários</h1>
         <h2 class="form-section">Usuário do Sistema</h2>
@@ -65,7 +54,7 @@
                 <input type="text" name="especializacao[]">
             </div>
         </div>
-        
+
         <button type="button" onclick="adicionarFormacao()">Adicionar Formação</button>
 
         <!-- Campos de Função -->
@@ -82,60 +71,43 @@
         <input type="file" name="foto" accept="image/*">
         
         <input type="submit" value="Cadastrar">
-    <button class="botao" onclick="voltarParaPaginaUser()">Voltar</button>
-
+    </form>
+    <button class= "botao" onclick="voltarParaPaginaUser()">Voltar</button>
     <script>
-        function mostrarFormulario() {
-            const formularioDiv = document.getElementById("formulario");
-            const feriasAgendadasDiv = document.getElementById("feriasAgendadas");
+        function adicionarFormacao() {
+            const formacoesDiv = document.getElementById("formacoes");
+            const novaFormacaoDiv = document.createElement("div");
+            novaFormacaoDiv.classList.add("formacao");
 
-            formularioDiv.style.display = "block";
-            feriasAgendadasDiv.style.display = "none";
+            novaFormacaoDiv.innerHTML = `
+                <label for="escolaridade">Escolaridade:</label>
+                <select name="escolaridade[]" required>
+                    <option value="Ensino Médio Incompleto">Ensino Médio Incompleto</option>
+                    <option value="Ensino Médio Completo">Ensino Médio Completo</option>
+                    <option value="Graduação Incompleta">Graduação Incompleta</option>
+                    <option value="Graduação Completa">Graduação Completa</option>
+                    <!-- Adicione outras opções conforme necessário -->
+                </select>
+
+                <label for="nivel_formacao">Nível de Formação:</label>
+                <select name="nivel_formacao[]" required>
+                    <option value="Técnico">Técnico</option>
+                    <option value="Graduação">Graduação</option>
+                    <option value="Pós-Graduação">Pós-Graduação</option>
+                    <option value="Mestrado">Mestrado</option>
+                    <option value="Doutorado">Doutorado</option>
+                    <!-- Adicione outras opções conforme necessário -->
+                </select>
+
+                <label for="especializacao">Especialização:</label>
+                <input type="text" name="especializacao[]">
+            `;
+
+            formacoesDiv.appendChild(novaFormacaoDiv);
         }
-
-        // Adicione um evento de escuta, como um clique em um botão
-document.getElementById("seuBotaoId").addEventListener("click", mostrarFeriasAgendadas);
-
-function mostrarFeriasAgendadas() {
-    // Use fetch para obter as férias agendadas
-    fetch("obter_ferias_agendadas.php") // Altere a URL para a rota correta
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Não foi possível obter as férias agendadas.");
-            }
-            return response.text(); // Altere para .text() para tratar a resposta como texto
-        })
-        .then(data => {
-            const feriasList = document.getElementById("feriasList");
-            feriasList.innerHTML = ""; // Limpa a lista para evitar duplicatas
-
-            // Se os dados não estiverem no formato JSON, divida o texto em linhas
-            const lines = data.split("\n");
-
-            lines.forEach(line => {
-                // Analise os dados da linha conforme necessário
-                const [dataInicio, dataFim, nomeFuncionario] = line.split(","); // Supondo que os dados sejam separados por vírgula
-
-                const listItem = document.createElement("li");
-                listItem.textContent = `Data de Início: ${dataInicio} | Data de Término: ${dataFim} | Funcionário: ${nomeFuncionario}`;
-                feriasList.appendChild(listItem);
-            });
-
-            // Exiba a seção de férias agendadas
-            const feriasAgendadasDiv = document.getElementById("feriasAgendadas");
-            feriasAgendadasDiv.style.display = "block";
-        })
-        .catch(error => {
-            console.error("Erro ao obter férias agendadas: " + error);
-            // Você pode exibir uma mensagem de erro ao usuário aqui
-
-            
-        // Esconda o formulário e a lista de férias agendadas (ou qualquer outra ação que deseje realizar)
-        formularioDiv.style.display = "none";
-        feriasAgendadasDiv.style.display = "none";
-        });
-        
-}
+        function voltarParaPaginaUser() {
+        window.location.href = 'login.php';
+    }
     </script>
 </body>
 </html>

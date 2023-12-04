@@ -106,8 +106,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="column">
         <img src="fotos/rhvision.png">
         <h2>Bem-Vindo ao Portal<br>RH Vision</h2>
-        <p>Se você tem dúvidas, sugestôes ou críticas, mande-nos um e-mail.</p>
-        <button onclick="abrirCaixaDeEmail()">Email</button>
+        <p>Se você tem dúvidas, sugestôes ou críticas, mande-nos um Whatsapp.</p>
+        <a class="bi bi-whatsapp" href="https://wa.me/5514996911488?text=Qual%20seria%20sua%20Dúvida?"> Whatsapp</a>
         </div>
         </div>  
         <script src="valida.js"></script>

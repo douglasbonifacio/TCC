@@ -106,10 +106,10 @@ $conn->close();
     <div class="conteudo">
             <h1>Mural de Recados</h1>
 
-            <p>Agradecimento a todos os professores e funcionários da Etec.</p>
-            <p>Desejamos um feliz natal e prospero ano novo a todos!</p>
-            <p>Segunda parte do décimo terceiro estara liberado dia 20</p>
-            <p>Estamos há 100 dias sem acidentes.</p>
+            <p><i class="bi bi-balloon-heart-fill"></i> Agradecimento a todos os professores e funcionários da Etec.</p>
+            <p><i class="bi bi-snow2"></i> Desejamos um feliz natal e prospero ano novo a todos!</p>
+            <p><i class="bi bi-currency-exchange"></i> Segunda parte do décimo terceiro estara liberado dia 20</p>
+            <p><i class="bi bi-clipboard-plus-fill"></i> Estamos há 100 dias sem acidentes.</p>
     </div>
     
     <div class="sidebar-footer">

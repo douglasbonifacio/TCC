@@ -4,8 +4,8 @@
     <title>Agendar Férias</title>
     <link rel="stylesheet" href="css/ferias.css">
 </head>
-<body class="box">
-    <div>
+<body>
+    <div  class="box">
     <h3>Agendar Férias:</h3>
    
 
